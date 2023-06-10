@@ -1,0 +1,69 @@
+@import './App.module';
+
+h2 {
+  margin-top: 20px;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 40px;
+  margin: 20px 0 40px 0;
+
+  :nth-child(1) {
+    display: block;
+    font-family: inherit;
+    font-size: 20px;
+    color: rgba(196, 196, 196, 0.5);
+    height: 40px;
+    flex-grow: 7;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    border: 2px rgba(196, 196, 196, 0.5) solid;
+    border-radius: 4px;
+    padding: 10px 8px;
+  }
+
+  :nth-child(2) {
+    display: block;
+    font-family: inherit;
+    font-size: 20px;
+    color: rgba(196, 196, 196, 0.5);
+    height: 40px;
+    flex-grow: 4;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    border: 2px rgba(196, 196, 196, 0.5) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 8px;
+  }
+
+  :nth-child(3) {
+    display: block;
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    font-family: $secondary-font;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255);
+    background: $base-color;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
