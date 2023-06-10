@@ -1,0 +1,13 @@
+.booksContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+
+  .books {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+  }
+}

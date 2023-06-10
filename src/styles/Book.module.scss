@@ -1,0 +1,121 @@
+@import './App.module';
+
+.book {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px;
+  background: #fff;
+
+  .desc {
+    h2 {
+      font-family: $secondary-font;
+      font-size: 22px;
+      font-weight: bold;
+      word-wrap: break-word;
+      color: $link-color;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: $link-color;
+      opacity: 0.5;
+    }
+
+    p {
+      font-family: $secondary-font;
+      font-size: 16px;
+      font-weight: 300;
+      color: $secondary-color;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      gap: 20px;
+
+      li {
+        font-family: $secondary-font;
+        font-size: 16px;
+        font-weight: 300;
+        color: $secondary-color;
+        list-style: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .progressContainer {
+    display: flex;
+    gap: 40px;
+
+    .chapter {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-left: 20px;
+
+      p {
+        font-family: $secondary-font;
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.5;
+        text-transform: uppercase;
+      }
+
+      h4 {
+        font-family: $secondary-font;
+        font-size: 18px;
+        font-weight: 300;
+        letter-spacing: -0.4px;
+      }
+
+      .primaryBtn {
+        font-family: $secondary-font;
+        font-size: 16px;
+        font-weight: 300;
+        color: rgba(255, 255, 255);
+        background: $base-color;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+    .progress {
+      display: flex;
+      align-self: center;
+      margin-right: 20px;
+      gap: 20px;
+
+      .progressIcon {
+        align-self: center;
+
+        span {
+          font-size: 80px;
+          color: $base-color;
+        }
+      }
+
+      .progressPercent {
+        h2 {
+          font-size: 30px;
+          font-weight: 400;
+          color: $link-color;
+        }
+
+        h4 {
+          font-size: 16px;
+          font-weight: 400;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
