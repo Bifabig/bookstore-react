@@ -30,7 +30,6 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       state.books = [...state.books, action.payload];
-      // console.log(state.books, action.payload);
     },
     removeBook: (state, action) => {
       const bookId = action.payload;
