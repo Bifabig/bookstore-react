@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/NewBook.module.scss';
-import { addBook } from '../redux/books/booksSlice';
+import { postBookItems } from '../redux/books/booksSlice';
 
 const NewBook = () => {
   const val = Math.random() * 1000;
+  // const [counterId, setCounterId] = useState(4);
   const [newBook, setNewBook] = useState({
     item_id: val.toString(),
     title: '',
@@ -14,7 +15,7 @@ const NewBook = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBook(newBook));
+    dispatch(postBookItems(newBook));
   };
   return (
     <div>

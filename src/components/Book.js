@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../styles/Book.module.scss';
-import { removeBook } from '../redux/books/booksSlice';
+import { delBookItems } from '../redux/books/booksSlice';
 
-const Book = ({ book }) => {
+const Book = ({ book, itemId }) => {
   const dispatch = useDispatch();
+
   return (
     <div className={styles.book}>
       <div className={styles.desc}>
@@ -18,7 +19,7 @@ const Book = ({ book }) => {
             <button
               type="button"
               className={styles.removeBtn}
-              onClick={() => dispatch(removeBook(book.item_id))}
+              onClick={() => dispatch(delBookItems(itemId))}
             >
               Remove
             </button>
@@ -51,6 +52,12 @@ const Book = ({ book }) => {
 };
 
 Book.defaultProps = { book: {} };
-Book.propTypes = { book: PropTypes.objectOf(PropTypes.string) };
+Book.defaultProps = { itemId: '' };
+Book.propTypes = {
+  book: PropTypes.objectOf(PropTypes.string),
+};
+Book.propTypes = {
+  itemId: PropTypes.string,
+};
 
 export default Book;
