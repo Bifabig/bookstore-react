@@ -6,7 +6,6 @@ import { getBookItems } from '../redux/books/booksSlice';
 import NewBook from './NewBook';
 
 const Books = () => {
-  // let fetchedBooks = [];
   const dispatch = useDispatch();
   const { books, isLoading, error } = useSelector((state) => state.books);
   useEffect(() => {
@@ -20,19 +19,7 @@ const Books = () => {
   return (
     <div className={styles.booksContainer}>
       <div className={styles.books}>
-        {books !== '' ? (
-          books.map((book) => Object.keys(book).map((key) => {
-            const position = book[key];
-            const bookObj = {
-              book: position[0],
-              itemId: key,
-            };
-            return <Book key={key} book={bookObj.book} itemId={bookObj.itemId} />;
-          }))
-        ) : (
-          <h2>No Books To Display</h2>
-        )}
-
+        { books.map((book) => book.author && <Book key={book.item_id} book={book} />)}
         <hr />
         <NewBook />
       </div>

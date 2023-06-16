@@ -4,10 +4,8 @@ import styles from '../styles/NewBook.module.scss';
 import { postBookItems } from '../redux/books/booksSlice';
 
 const NewBook = () => {
-  const val = Math.random() * 1000;
-  // const [counterId, setCounterId] = useState(4);
   const [newBook, setNewBook] = useState({
-    item_id: val.toString(),
+    item_id: '',
     title: '',
     author: '',
     category: 'Nonfiction',
@@ -15,7 +13,7 @@ const NewBook = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postBookItems(newBook));
+    if (newBook.item_id !== '') dispatch(postBookItems(newBook));
   };
   return (
     <div>
@@ -24,7 +22,10 @@ const NewBook = () => {
         <input
           type="text"
           placeholder="Book title"
-          onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}
+          onChange={(e) => setNewBook({
+            ...newBook,
+            title: e.target.value,
+          })}
         />
         <select
           name="author"
@@ -36,7 +37,16 @@ const NewBook = () => {
           <option value="Robert Kiyosaki">Robert Kiyosaki</option>
           <option value="Marcus R.">Marcus R.</option>
         </select>
-        <input type="submit" value="Add New Book" />
+        <input
+          type="submit"
+          value="Add New Book"
+          onClick={
+          () => setNewBook({
+            ...newBook,
+            item_id: (Math.random() * 1000).toString(),
+          })
+}
+        />
       </form>
     </div>
   );

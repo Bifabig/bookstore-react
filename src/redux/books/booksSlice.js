@@ -1,27 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/whXUTbsgANv3pP1bZNc6/books';
-// const bookItems = [
-//   {
-//     item_id: 'item1',
-//     title: 'The Great Gatsby',
-//     author: 'John Smith',
-//     category: 'Fiction',
-//   },
-//   {
-//     item_id: 'item2',
-//     title: 'Anna Karenina',
-//     author: 'Leo Tolstoy',
-//     category: 'Fiction',
-//   },
-//   {
-//     item_id: 'item3',
-//     title: 'The Selfish Gene',
-//     author: 'Richard Dawkins',
-//     category: 'Nonfiction',
-//   },
-// ];
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/hynKeFguA12wQQ0rwNym/books';
 const initialState = {
   books: [],
   isLoading: false,
@@ -88,15 +68,22 @@ const booksSlice = createSlice({
       })
       .addCase(getBookItems.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.books.map((book)=> Object.keys(book).map((key) => {
-        //   const position = book[key];
-        //   const bookObj = {
-        //     book: position[0],
-        //     itemId: key,
-        //   };
-        //   state.books = [...bookObj.book, key];
-        // }))
-        state.books = [...state.books, action.payload];
+        const fetchedData = [action.payload];
+        const finalState = [];
+        fetchedData.map((book) => Object.keys(book).map((key) => {
+          const position = book[key];
+          const bookObj = {
+            book: position[0],
+            itemId: key,
+          };
+
+          if (typeof bookObj.book === 'object') {
+            finalState.push({ ...bookObj.book, item_id: bookObj.itemId });
+          }
+          state.books = [...finalState];
+
+          return state.books;
+        }));
       })
       .addCase(getBookItems.rejected, (state, action) => {
         state.isLoading = false;
@@ -104,12 +91,9 @@ const booksSlice = createSlice({
       })
       .addCase(postBookItems.fulfilled, (state, action) => {
         state.books = [...state.books, action.meta.arg];
-        console.log(state.books);
       })
-      .addCase(delBookItems.fulfilled, (state) => {
-        console.log(state.books);
-        // state.books = state.books.filter((book) => book.item_id !== action.meta.arg);
-        // state.books.push(action.meta.arg);
+      .addCase(delBookItems.fulfilled, (state, action) => {
+        state.books = state.books.filter((book) => book.item_id !== action.meta.arg);
       });
   },
 });

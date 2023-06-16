@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import styles from '../styles/Book.module.scss';
 import { delBookItems } from '../redux/books/booksSlice';
 
-const Book = ({ book, itemId }) => {
+const Book = ({ book }) => {
   const dispatch = useDispatch();
-
   return (
     <div className={styles.book}>
       <div className={styles.desc}>
@@ -19,7 +18,7 @@ const Book = ({ book, itemId }) => {
             <button
               type="button"
               className={styles.removeBtn}
-              onClick={() => dispatch(delBookItems(itemId))}
+              onClick={() => dispatch(delBookItems(book.item_id))}
             >
               Remove
             </button>
@@ -52,12 +51,8 @@ const Book = ({ book, itemId }) => {
 };
 
 Book.defaultProps = { book: {} };
-Book.defaultProps = { itemId: '' };
 Book.propTypes = {
   book: PropTypes.objectOf(PropTypes.string),
-};
-Book.propTypes = {
-  itemId: PropTypes.string,
 };
 
 export default Book;
