@@ -13,11 +13,10 @@ h2 {
   gap: 40px;
   margin: 20px 0 40px 0;
 
-  :nth-child(1) {
+  .title {
     display: block;
     font-family: inherit;
     font-size: 20px;
-    color: rgba(196, 196, 196, 0.5);
     height: 40px;
     flex-grow: 7;
     flex-shrink: 1;
@@ -29,11 +28,10 @@ h2 {
     padding: 10px 8px;
   }
 
-  :nth-child(2) {
+  .author {
     display: block;
     font-family: inherit;
     font-size: 20px;
-    color: rgba(196, 196, 196, 0.5);
     height: 40px;
     flex-grow: 4;
     flex-shrink: 1;
@@ -46,7 +44,7 @@ h2 {
     padding: 0 8px;
   }
 
-  :nth-child(3) {
+  .submit {
     display: block;
     flex-grow: 2;
     flex-shrink: 1;

@@ -14,6 +14,12 @@ const NewBook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newBook.item_id !== '') dispatch(postBookItems(newBook));
+    setNewBook({
+      item_id: '',
+      title: '',
+      author: '',
+      category: 'Nonfiction',
+    });
   };
   return (
     <div>
@@ -22,6 +28,8 @@ const NewBook = () => {
         <input
           type="text"
           placeholder="Book title"
+          value={newBook.title}
+          className={styles.title}
           onChange={(e) => setNewBook({
             ...newBook,
             title: e.target.value,
@@ -30,8 +38,11 @@ const NewBook = () => {
         <select
           name="author"
           id="lang"
+          value={newBook.author}
+          className={styles.author}
           onChange={(e) => setNewBook({ ...newBook, author: e.target.value })}
         >
+          <option value="" disabled> Author </option>
           <option value="Biftu Girma">Biftu Girma</option>
           <option value="Bereket Degu">Bereket Degu</option>
           <option value="Robert Kiyosaki">Robert Kiyosaki</option>
@@ -40,6 +51,7 @@ const NewBook = () => {
         <input
           type="submit"
           value="Add New Book"
+          className={styles.submit}
           onClick={
           () => setNewBook({
             ...newBook,

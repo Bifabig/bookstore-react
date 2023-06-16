@@ -107,9 +107,13 @@
       .progressIcon {
         align-self: center;
 
-        span {
-          font-size: 80px;
-          color: $base-color;
+        .circle {
+          width: 100px;
+          height: 100px;
+          border: 5px solid #307bbe;
+          border-radius: 50%;
+          border-left-color: #e8e8e8;
+          transform: rotate(45deg);
         }
       }
 
