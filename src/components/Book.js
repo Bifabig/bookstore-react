@@ -30,7 +30,8 @@ const Book = ({ book }) => {
       <div className={styles.progressContainer}>
         <div className={styles.progress}>
           <div className={styles.progressIcon}>
-            <span className="material-icons">rotate_right</span>
+            {/* <span className="material-icons">rotate_right</span> */}
+            <div className={styles.circle} />
           </div>
           <div className={styles.progressPercent}>
             <h2>64%</h2>
